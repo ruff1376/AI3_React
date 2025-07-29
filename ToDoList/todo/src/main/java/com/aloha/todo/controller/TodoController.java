@@ -109,4 +109,32 @@ public class TodoController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    // 전체 삭제
+    @DeleteMapping("/all")
+    public ResponseEntity<?> deleteAll() {
+        try {
+            boolean result = todoService.deleteAll();
+            if (result)
+                return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+            else
+                return new ResponseEntity<>("FAIL", HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // 전체 완료
+    @PutMapping("/all")
+    public ResponseEntity<?> completeAll() {
+        try {
+            boolean result = todoService.completeAll();
+            if (result)
+                return new ResponseEntity<>("SUCCESS", HttpStatus.OK);
+            else
+                return new ResponseEntity<>("FAIL", HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

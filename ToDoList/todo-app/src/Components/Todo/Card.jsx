@@ -1,17 +1,9 @@
 import React, { useState } from 'react'
 
-const Card = ({ todo, onToggle }) => {
-    // 🧊 state
-    // const [status, setStatus] = useState(todo.status)
+const Card = ({ todo, onToggle, onRemove }) => {
 
     let { id, name, status } = todo
     let isActive = status ? 'todoItem active' : 'todoItem'
-
-    // 체크박스 변경 핸들러 ➡ List 부모 컴포넌트 전환
-    // const onChange = (e) => {
-    //     const newStatus = e.target.checked
-    //     setStatus(newStatus)
-    // }
 
     return (
         <li className={isActive}>
@@ -21,7 +13,7 @@ const Card = ({ todo, onToggle }) => {
                 <span>{ name }</span>
             </div>
             <div className="item">
-                <button className="btn">삭제</button>
+                <button className="btn" onClick={ () => onRemove(id) }>삭제</button>
             </div>
         </li>
     )
