@@ -6,7 +6,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- namespace="매퍼 인터페이스 경로" --> 
 <mapper namespace="com.aloha.boards.mapper.BoardMapper">
 
-    <select id="list" resultType="Boards">
+    <!-- BoardMap -->
+    <resultMap type="Boards" id="BoardMap">
+        <id property="no" column="no" />
+        <result property="no" column="no" />
+        <result property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="writer" column="writer" />
+        <result property="content" column="content" />
+        <result property="createdAt" column="created_at" />
+        <result property="updatedAt" column="updated_at" />
+
+        <association property="file" column="no" javaType="Files" select="selectMainFile"></association>
+    </resultMap>
+
+    <!-- 메인(썸네일) 파일 조회 -->
+    <select id="selectMainFile" resultType="Files">
+        SELECT *
+        FROM files
+        WHERE p_no = #{no}
+          AND p_table = 'boards'
+          AND TYPE = 'MAIN'
+    </select>
+
+    <select id="list" resultMap="BoardMap">
         SELECT *
         FROM boards
     </select>
@@ -23,7 +46,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         WHERE id = #{id}
     </select>
 
-    <insert id="insert">
+<!-- ✨ 자동증가된(AI) boards의 no를 Boards 객체의 no 변수에 넣어준다. -->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="no">
         INSERT INTO boards ( id, title, writer, content )
         VALUES ( #{id}, #{title}, #{writer}, #{content} )
     </insert>
