@@ -79,10 +79,10 @@ const List = ({ list, pagination }) => {
 
                 {/* 페이지네이션 */}
                 <div className="pagination">
-                    <Link tp={`/boards?page=${pagination.first}`} className='btn-page'>
+                    <Link to={`/boards?page=${pagination.first}`} className='btn-page'>
                         <KeyboardDoubleArrowLeftIcon />
                     </Link>
-                    <Link tp={`/boards?page=${pagination.prev}`} className='btn-page'>
+                    <Link to={`/boards?page=${pagination.prev}`} className='btn-page'>
                         <KeyboardArrowLeftIcon />
                     </Link>
                     {
@@ -93,10 +93,10 @@ const List = ({ list, pagination }) => {
                             </Link>
                         ))
                     }
-                    <Link tp={`/boards?page=${pagination.next}`} className='btn-page'>
+                    <Link to={`/boards?page=${pagination.next}`} className='btn-page'>
                         <KeyboardArrowRightIcon />
                     </Link>
-                    <Link tp={`/boards?page=${pagination.last}`} className='btn-page'>
+                    <Link to={`/boards?page=${pagination.last}`} className='btn-page'>
                         <KeyboardDoubleArrowRightIcon />
                     </Link>
                 </div>
