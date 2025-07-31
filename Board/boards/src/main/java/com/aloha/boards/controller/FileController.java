@@ -134,7 +134,7 @@ public class FileController {
     // 썸네일 이미지
     @GetMapping("/img/{id}")
     public void thumbnailImg(
-        @PathVariable String id,
+        @PathVariable("id") String id,
         HttpServletResponse response
     ) throws IOException {
         Files file = fileService.selectById(id);

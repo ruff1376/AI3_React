@@ -32,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="list" resultMap="BoardMap">
         SELECT *
         FROM boards
+        ORDER BY created_at DESC, no DESC
     </select>
 
     <select id="select" resultType="Boards">

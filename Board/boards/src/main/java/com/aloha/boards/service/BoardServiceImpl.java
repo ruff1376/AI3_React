@@ -33,7 +33,7 @@ public class BoardServiceImpl implements BoardService {
         List<Boards> list = boardMapper.list();
         PageInfo<Boards> pageInfo = new PageInfo<>(list);
         // createdAt 내림차순 정렬
-        pageInfo.getList().sort((b1, b2) -> b2.getCreatedAt().compareTo(b1.getCreatedAt()));
+        // pageInfo.getList().sort((b1, b2) -> b2.getCreatedAt().compareTo(b1.getCreatedAt()));
 
         return pageInfo;
     }
