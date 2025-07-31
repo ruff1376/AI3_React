@@ -23,7 +23,7 @@ public interface FileMapper extends BaseMapper<Files> {
     // 선택 삭제(List) - no
     public int deleteFileList(@Param("noList") List<Long> noList);
     // 선택 삭제(List) - id
-    public int deleteFileListById(@Param("noList") List<String> idList);
+    public int deleteFileListById(@Param("idList") List<String> idList);
 
     // 타입 별 파일 조회
     public Files selectByType(Files file);
