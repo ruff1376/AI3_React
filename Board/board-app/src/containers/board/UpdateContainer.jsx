@@ -24,7 +24,7 @@ const UpdateContainer = () => {
   // 다운로드
   const onDownload = async (id, fileName) => {
     // API 요청
-    const response = await files.download()
+    const response = await files.download(id)
     console.log(response);
 
     // 1. 서버에서 응답 파일 데이터를 받은 Blob 변환
